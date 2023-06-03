@@ -71,7 +71,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         user.setConnected(false);
         user.setMaskedIp(null);
         user.getConnectionList().stream().forEach(connection -> connectionRepository2.delete(connection));
-        user.setConnectionList(new ArrayList<>());
+        user.setConnectionList(null);
 
         return userRepository2.save(user);
     }
