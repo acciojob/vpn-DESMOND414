@@ -40,14 +40,7 @@ public class UserServiceImpl implements UserService {
     public User subscribe(Integer userId, Integer serviceProviderId) {
         User user = userRepository3.findById(userId).orElse(null);
         ServiceProvider serviceProvider = serviceProviderRepository3.findById(serviceProviderId).orElse(null);
-
-        if (user == null) {
-            return null;
-        }
-
-        if (serviceProvider != null) {
-            user.getServiceProviderList().add(serviceProvider);
-        }
+        user.getServiceProviderList().add(serviceProvider);
 
         return userRepository3.save(user);
     }
