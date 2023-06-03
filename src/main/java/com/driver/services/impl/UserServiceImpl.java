@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
             Country country = new Country(name, name.toCode());
             User user = new User(username, password, country.getCode(), null, false, country);
             user = userRepository3.save(user);
-            user.setOriginalIp(String.format("{}.{}", country.getCode(), user.getId()));
+            user.setOriginalIp(String.format("%s.%s", country.getCode(), user.getId()));
             return userRepository3.save(user);
         } catch (Exception e) {
             throw new Exception("Country not found");

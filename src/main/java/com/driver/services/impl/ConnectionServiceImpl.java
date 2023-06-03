@@ -52,7 +52,7 @@ public class ConnectionServiceImpl implements ConnectionService {
             } else {
                 user.setConnected(true);
                 user.getConnectionList().add(new Connection(user, serviceProviders.get(0)));
-                user.setMaskedIp(String.format("{}.{}.{}", CountryName.valueOf(countryName.toUpperCase()).toCode(), serviceProviders.get(0), user.getId()));
+                user.setMaskedIp(String.format("%s.%s.%s", CountryName.valueOf(countryName.toUpperCase()).toCode(), serviceProviders.get(0), user.getId()));
             }
             return userRepository2.save(user);
         }
