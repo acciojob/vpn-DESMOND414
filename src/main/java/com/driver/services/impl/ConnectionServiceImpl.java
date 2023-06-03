@@ -52,7 +52,7 @@ public class ConnectionServiceImpl implements ConnectionService {
             } else {
                 user.setConnected(true);
                 user.getConnectionList().add(new Connection(user, serviceProviders.get(0)));
-                user.setMaskedIp(CountryName.valueOf(countryName.toUpperCase()).toCode());
+                user.setMaskedIp(String.format("{}.{}.{}", CountryName.valueOf(countryName.toUpperCase()).toCode(), serviceProviders.get(0), user.getId()));
             }
             return userRepository2.save(user);
         }
@@ -83,7 +83,7 @@ public class ConnectionServiceImpl implements ConnectionService {
 
         CountryName receiverCountry = null;
         if (receiver.getConnected()) {
-            receiverCountry = CountryName.valueOf(receiver.getMaskedIp());
+            receiverCountry = CountryName.valueOf(receiver.getMaskedIp().split(".")[0]);
         } else {
             receiverCountry = receiver.getOriginalCountry().getCountryName();
         }
