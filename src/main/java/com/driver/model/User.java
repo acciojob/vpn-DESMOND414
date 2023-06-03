@@ -17,7 +17,7 @@ public class User {
     private String maskedIp;
     private Boolean connected;
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinTable(name = "course_like",
+    @JoinTable(name = "user_serviceprovider_table",
             joinColumns = @JoinColumn(name = "user"),
             inverseJoinColumns = @JoinColumn(name = "serviceProviderList"))
     private List<ServiceProvider> serviceProviderList = new ArrayList<>();

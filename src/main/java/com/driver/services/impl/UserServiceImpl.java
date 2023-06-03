@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
         try {
             CountryName name = CountryName.valueOf(countryName.toUpperCase());
             Country country = new Country(name, name.toCode());
-            User user = new User(username, password, country.getCode(), null, false, country);
+            User user = new User(username, password, country.getCode() +".0", null, false, country);
             user = userRepository3.save(user);
             user.setOriginalIp(String.format("%s.%s", country.getCode(), user.getId()));
             return userRepository3.save(user);
