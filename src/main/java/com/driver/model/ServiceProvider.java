@@ -8,7 +8,7 @@ import java.util.List;
 public class ServiceProvider {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     private String name;
 
@@ -17,7 +17,7 @@ public class ServiceProvider {
         this.admin = admin;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn
     private Admin admin;
 

@@ -10,7 +10,7 @@ public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     private CountryName countryName;
 
@@ -24,7 +24,7 @@ public class Country {
     @OneToOne(mappedBy = "originalCountry", cascade = CascadeType.ALL)
     private User user;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn
     private ServiceProvider serviceProvider;
 
