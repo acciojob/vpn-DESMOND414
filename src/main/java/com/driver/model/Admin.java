@@ -52,4 +52,7 @@ public class Admin {
 
     @OneToMany(mappedBy = "admin", cascade = CascadeType.PERSIST)
     private List<ServiceProvider> serviceProviders;
+
+    public Admin() {
+    }
 }

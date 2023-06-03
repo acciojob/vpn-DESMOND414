@@ -20,6 +20,9 @@ public class ServiceProvider {
     @JoinColumn
     private Admin admin;
 
+    public ServiceProvider() {
+    }
+
     public Integer getId() {
         return id;
     }

@@ -28,6 +28,9 @@ public class User {
     @JoinColumn(referencedColumnName = "id")
     private Country country;
 
+    public User() {
+    }
+
     public Integer getId() {
         return id;
     }

@@ -21,6 +21,9 @@ public class Connection {
         this.serviceProvider = serviceProvider;
     }
 
+    public Connection() {
+    }
+
     public Integer getId() {
         return id;
     }
