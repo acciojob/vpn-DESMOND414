@@ -24,7 +24,7 @@ public class Country {
     @OneToOne(mappedBy = "originalCountry", cascade = CascadeType.PERSIST)
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn
     private ServiceProvider serviceProvider;
 
