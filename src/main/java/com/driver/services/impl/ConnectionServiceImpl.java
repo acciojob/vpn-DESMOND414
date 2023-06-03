@@ -24,9 +24,9 @@ public class ConnectionServiceImpl implements ConnectionService {
     @Override
     public User connect(int userId, String countryName) throws Exception {
         User user = userRepository2.findById(userId).orElse(null);
-        if (user == null) {
-            return null;
-        }
+//        if (user == null) {
+//            return null;
+//        }
         if (user.getConnected()) {
             throw new Exception("Already connected");
         } else if (user.getOriginalCountry().getCountryName().equals(countryName)) {
@@ -62,9 +62,9 @@ public class ConnectionServiceImpl implements ConnectionService {
     @Override
     public User disconnect(int userId) throws Exception {
         User user = userRepository2.findById(userId).orElse(null);
-        if (user == null) {
-            return null;
-        }
+//        if (user == null) {
+//            return null;
+//        }
         if(!user.getConnected()) {
             throw new Exception("Already disconnected");
         }
