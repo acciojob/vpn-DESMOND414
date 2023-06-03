@@ -43,7 +43,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public ServiceProvider addCountry(int serviceProviderId, String countryName) throws Exception{
         try {
-            CountryName name = CountryName.valueOf(countryName);
+            CountryName name = CountryName.valueOf(countryName.toUpperCase());
             Country country = new Country(name, name.toCode());
             ServiceProvider serviceProvider = serviceProviderRepository1.findById(serviceProviderId).orElse(null);
             if (serviceProvider != null) {

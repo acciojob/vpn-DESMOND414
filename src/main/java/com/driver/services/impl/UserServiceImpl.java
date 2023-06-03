@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User register(String username, String password, String countryName) throws Exception{
         try {
-            CountryName name = CountryName.valueOf(countryName);
+            CountryName name = CountryName.valueOf(countryName.toUpperCase());
             Country country = new Country(name, name.toCode());
             User user = new User(username, password, country.getCode(), null, false, country);
             return userRepository3.save(user);
