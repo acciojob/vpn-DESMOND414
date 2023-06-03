@@ -47,13 +47,10 @@ public class ConnectionServiceImpl implements ConnectionService {
                         }
                     })
                     .collect(Collectors.toList());
-            if (serviceProviders.isEmpty()) {
-                throw new Exception("Unable to connect");
-            } else {
-                user.setConnected(true);
-                user.getConnectionList().add(new Connection(user, serviceProviders.get(0)));
-                user.setMaskedIp(String.format("%s.%s.%s", CountryName.valueOf(countryName.toUpperCase()).toCode(), serviceProviders.get(0), user.getId()));
-            }
+            user.setConnected(true);
+            user.getConnectionList().add(new Connection(user, serviceProviders.get(0)));
+            user.setMaskedIp(String.format("%s.%s.%s", CountryName.valueOf(countryName.toUpperCase()).toCode(), serviceProviders.get(0), user.getId()));
+
             return userRepository2.save(user);
         }
 
