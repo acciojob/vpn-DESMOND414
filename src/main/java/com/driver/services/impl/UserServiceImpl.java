@@ -1,5 +1,6 @@
 package com.driver.services.impl;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.driver.model.Country;
 import com.driver.model.CountryName;
 import com.driver.model.ServiceProvider;
@@ -24,13 +25,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public User register(String username, String password, String countryName) throws Exception{
         try {
+            System.out.println(countryName);
             CountryName name = CountryName.valueOf(countryName.toUpperCase());
+            System.out.println(name);
             Country country = new Country(name, name.toCode());
             User user = new User(username, password, country.getCode(), null, false, country);
+            System.out.println(user);
             user = userRepository3.save(user);
+            System.out.println(user);
             user.setOriginalIp(String.format("%s.%s", country.getCode(), user.getId()));
+            System.out.println(user);
             return userRepository3.save(user);
         } catch (Exception e) {
+            System.out.println(e);
             throw new Exception("Country not found");
         }
     }
