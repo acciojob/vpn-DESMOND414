@@ -90,11 +90,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         if (receiverCountry == senderCountry) {
             return sender;
         } else {
-            try {
-                return this.connect(senderId, receiverCountry.name());
-            } catch(Exception e) {
-                throw new Exception("Cannot establish communication");
-            }
+            return this.connect(senderId, receiverCountry.name());
         }
     }
 }
