@@ -29,7 +29,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         }
         if (user.getConnected()) {
             throw new Exception("Already connected");
-        } else if (user.getCountry().getCountryName().equals(countryName)) {
+        } else if (user.getOriginalCountry().getCountryName().equals(countryName)) {
             return user;
         } else {
             if (user.getServiceProviderList().isEmpty()) {
@@ -85,10 +85,10 @@ public class ConnectionServiceImpl implements ConnectionService {
         if (receiver.getConnected()) {
             receiverCountry = CountryName.valueOf(receiver.getMaskedIp());
         } else {
-            receiverCountry = receiver.getCountry().getCountryName();
+            receiverCountry = receiver.getOriginalCountry().getCountryName();
         }
 
-        CountryName senderCountry = sender.getCountry().getCountryName();
+        CountryName senderCountry = sender.getOriginalCountry().getCountryName();
 
         if (receiverCountry == senderCountry) {
             return sender;

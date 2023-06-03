@@ -26,7 +26,7 @@ public class User {
 
     @OneToOne
     @JoinColumn(referencedColumnName = "id")
-    private Country country;
+    private Country originalCountry;
 
     public User() {
     }
@@ -95,20 +95,20 @@ public class User {
         this.connectionList = connectionList;
     }
 
-    public Country getCountry() {
-        return country;
+    public Country getOriginalCountry() {
+        return originalCountry;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setOriginalCountry(Country originalCountry) {
+        this.originalCountry = originalCountry;
     }
 
-    public User(String username, String password, String originalIp, String maskedIp, Boolean connected, Country country) {
+    public User(String username, String password, String originalIp, String maskedIp, Boolean connected, Country originalCountry) {
         this.username = username;
         this.password = password;
         this.originalIp = originalIp;
         this.maskedIp = maskedIp;
         this.connected = connected;
-        this.country = country;
+        this.originalCountry = originalCountry;
     }
 }

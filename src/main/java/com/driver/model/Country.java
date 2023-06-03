@@ -21,7 +21,7 @@ public class Country {
         this.code = code;
     }
 
-    @OneToOne(mappedBy = "country", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "originalCountry", cascade = CascadeType.PERSIST)
     private User user;
 
     @ManyToOne
