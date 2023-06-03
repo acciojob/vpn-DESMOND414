@@ -50,7 +50,7 @@ public class Admin {
 
     private String password;
 
-    @OneToMany(mappedBy = "admin", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
     private List<ServiceProvider> serviceProviders;
 
     public Admin() {

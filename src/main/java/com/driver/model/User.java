@@ -21,10 +21,10 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "serviceProviderList"))
     private List<ServiceProvider> serviceProviderList;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Connection> connectionList;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(referencedColumnName = "id")
     private Country originalCountry;
 

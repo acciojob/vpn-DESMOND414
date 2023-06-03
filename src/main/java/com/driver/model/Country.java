@@ -21,10 +21,10 @@ public class Country {
         this.code = code;
     }
 
-    @OneToOne(mappedBy = "originalCountry", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "originalCountry", cascade = CascadeType.ALL)
     private User user;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private ServiceProvider serviceProvider;
 

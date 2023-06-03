@@ -16,7 +16,7 @@ public class ServiceProvider {
         this.admin = admin;
     }
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Admin admin;
 
@@ -71,13 +71,13 @@ public class ServiceProvider {
         this.countryList = countryList;
     }
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<User> users;
 
-    @OneToMany(mappedBy = "serviceProvider", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "serviceProvider", cascade = CascadeType.ALL)
     private List<Connection> connectionList;
 
-    @OneToMany(mappedBy = "serviceProvider", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "serviceProvider", cascade = CascadeType.ALL)
     private List<Country> countryList;
 
 }
