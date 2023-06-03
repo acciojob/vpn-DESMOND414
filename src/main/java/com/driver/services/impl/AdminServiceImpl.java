@@ -48,8 +48,9 @@ public class AdminServiceImpl implements AdminService {
             ServiceProvider serviceProvider = serviceProviderRepository1.findById(serviceProviderId).orElse(null);
             if (serviceProvider != null) {
                 serviceProvider.getCountryList().add(country);
+                return serviceProviderRepository1.save(serviceProvider);
             }
-            return serviceProvider;
+            return null;
         } catch (Exception e) {
             throw new Exception("Country not found");
         }
