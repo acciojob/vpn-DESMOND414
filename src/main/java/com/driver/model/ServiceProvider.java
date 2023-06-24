@@ -1,34 +1,36 @@
 package com.driver.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "serviceProviders")
 public class ServiceProvider {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String name;
-
-    public ServiceProvider(String name, Admin admin) {
-        this.name = name;
-        this.admin = admin;
-    }
-
     @ManyToOne
     @JoinColumn
     private Admin admin;
 
+    @ManyToMany(mappedBy = "serviceProviderList",cascade = CascadeType.ALL)
+    private List<User> users;
+    @OneToMany(mappedBy = "serviceProvider", cascade = CascadeType.ALL)
+    private List<Country> countryList;
+
+    @OneToMany(mappedBy = "serviceProvider",cascade = CascadeType.ALL)
+    private List<Connection> connectionList ;
+
     public ServiceProvider() {
     }
 
-    public Integer getId() {
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -56,14 +58,6 @@ public class ServiceProvider {
         this.users = users;
     }
 
-    public List<Connection> getConnectionList() {
-        return connectionList;
-    }
-
-    public void setConnectionList(List<Connection> connectionList) {
-        this.connectionList = connectionList;
-    }
-
     public List<Country> getCountryList() {
         return countryList;
     }
@@ -72,13 +66,11 @@ public class ServiceProvider {
         this.countryList = countryList;
     }
 
-    @ManyToMany(mappedBy = "serviceProviderList",cascade = CascadeType.ALL)
-    private List<User> users = new ArrayList<>();
+    public List<Connection> getConnectionList() {
+        return connectionList;
+    }
 
-    @OneToMany(mappedBy = "serviceProvider", cascade = CascadeType.ALL)
-    private List<Connection> connectionList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "serviceProvider", cascade = CascadeType.ALL)
-    private List<Country> countryList = new ArrayList<>();
-
+    public void setConnectionList(List<Connection> connectionList) {
+        this.connectionList = connectionList;
+    }
 }
